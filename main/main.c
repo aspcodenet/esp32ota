@@ -28,7 +28,7 @@
 
 
 #define FIRMWARE_VERSION	0.1
-#define UPDATE_JSON_URL		"https://esp32tutorial.netsons.org/https_ota/firmware.json"
+#define UPDATE_JSON_URL		"https://raw.githubusercontent.com/aspcodenet/esp32ota/main/bin/firmware.json"
 
 
 #define LED1_PIN 2
