@@ -31,7 +31,7 @@
 
 
 #define HASH_LEN 32
-#define FIRMWARE_VERSION	0.3
+#define FIRMWARE_VERSION	0.4
 #define UPDATE_JSON_URL		"https://github.com/aspcodenet/esp32ota/raw/main/bin/firmware.json"
 
 
@@ -75,16 +75,16 @@ esp_err_t _http_event_handler(esp_http_client_event_t *evt) {
 
 
 void check_update_task(void *pvParameter) {
-	
+	int cnt = 0;
 	while(1) {
-        // char buf[255];
-        // strcpy(buf,UPDATE_JSON_URL);
-        // strcat();
+        char buf[255];
+        sprintf(buf, "%s?cb=%d",UPDATE_JSON_URL,cnt);
+        cnt++;
 		printf("Looking for a new firmware...\n");
 	
 		// configure the esp_http_client
 		esp_http_client_config_t config = {
-        .url = UPDATE_JSON_URL,
+        .url = buf,
         .event_handler = _http_event_handler,
         .keep_alive_enable = true,        
         .timeout_ms = 30000,
@@ -265,8 +265,8 @@ void app_main(void)
 
     while(1){
         gpio_set_level(THEPIN,1 );
-        vTaskDelay(2000 / portTICK_PERIOD_MS);        
+        vTaskDelay(200 / portTICK_PERIOD_MS);        
         gpio_set_level(LED1_PIN,0 );
-        vTaskDelay(2000 / portTICK_PERIOD_MS);        
+        vTaskDelay(200 / portTICK_PERIOD_MS);        
     }
 }
