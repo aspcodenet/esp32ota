@@ -31,7 +31,7 @@
 
 
 #define HASH_LEN 32
-#define FIRMWARE_VERSION	0.4
+#define FIRMWARE_VERSION	0.5
 #define UPDATE_JSON_URL		"https://github.com/aspcodenet/esp32ota/raw/main/bin/firmware.json"
 
 
@@ -80,7 +80,7 @@ void check_update_task(void *pvParameter) {
         char buf[255];
         sprintf(buf, "%s?cb=%d",UPDATE_JSON_URL,cnt);
         cnt++;
-		printf("Looking for a new firmware...\n");
+		printf("Looking for a new firmware at %s", buf);
 	
 		// configure the esp_http_client
 		esp_http_client_config_t config = {
