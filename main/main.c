@@ -31,7 +31,7 @@
 
 
 #define HASH_LEN 32
-#define FIRMWARE_VERSION	0.5
+#define FIRMWARE_VERSION	0.6
 #define UPDATE_JSON_URL		"https://github.com/aspcodenet/esp32ota/raw/main/bin/firmware.json"
 
 
@@ -78,7 +78,7 @@ void check_update_task(void *pvParameter) {
 	int cnt = 0;
 	while(1) {
         char buf[255];
-        sprintf(buf, "%s?cb=%d",UPDATE_JSON_URL,cnt);
+        sprintf(buf, "%s?token=%d",UPDATE_JSON_URL,cnt);
         cnt++;
 		printf("Looking for a new firmware at %s", buf);
 	
@@ -265,8 +265,8 @@ void app_main(void)
 
     while(1){
         gpio_set_level(THEPIN,1 );
-        vTaskDelay(200 / portTICK_PERIOD_MS);        
+        vTaskDelay(2000 / portTICK_PERIOD_MS);        
         gpio_set_level(LED1_PIN,0 );
-        vTaskDelay(200 / portTICK_PERIOD_MS);        
+        vTaskDelay(2000 / portTICK_PERIOD_MS);        
     }
 }
