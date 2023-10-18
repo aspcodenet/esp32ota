@@ -31,7 +31,7 @@
 
 
 #define HASH_LEN 32
-#define FIRMWARE_VERSION	0.6
+#define FIRMWARE_VERSION	0.7
 #define UPDATE_JSON_URL		"https://github.com/aspcodenet/esp32ota/raw/main/bin/firmware.json"
 
 
@@ -265,8 +265,8 @@ void app_main(void)
 
     while(1){
         gpio_set_level(THEPIN,1 );
-        vTaskDelay(2000 / portTICK_PERIOD_MS);        
+        vTaskDelay(200 / portTICK_PERIOD_MS);        
         gpio_set_level(LED1_PIN,0 );
-        vTaskDelay(2000 / portTICK_PERIOD_MS);        
+        vTaskDelay(200 / portTICK_PERIOD_MS);        
     }
 }
